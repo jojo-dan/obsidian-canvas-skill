@@ -2,7 +2,7 @@
 
 Claude Code skills for generating and validating Obsidian `.canvas` files from natural language.
 
-This collection complements the [`json-canvas`](https://github.com/obsidianmd/json-canvas) skill by adding a full pipeline: layout planning, file generation, automated validation, visual verification, and correction loops.
+This collection complements the `json-canvas` skill (built into Claude Code as `obsidian:json-canvas`) by adding a full pipeline: layout planning, file generation, automated validation, visual verification, and correction loops.
 
 ## Skills Included
 
@@ -16,30 +16,36 @@ This collection complements the [`json-canvas`](https://github.com/obsidianmd/js
 
 - [Claude Code](https://claude.ai/code) — required to run skills
 - [Obsidian](https://obsidian.md) — required to open and view `.canvas` files
-- [`json-canvas` skill](https://github.com/obsidianmd/json-canvas) — used by `canvas` in Step 2 to write the file
-- [`obsidian-cli`](https://github.com/open-source-labs/obsidian-cli) skill — used for screenshot-based visual validation (optional; validation falls back to JSON-only if Obsidian is not running)
+- `json-canvas` skill — built into Claude Code as `obsidian:json-canvas`; used by `canvas` in Step 2 to write the file
+- `obsidian-cli` skill (optional) — built into Claude Code as `obsidian:obsidian-cli`; used for screenshot-based visual validation in `canvas-verify` only; validation falls back to JSON-only if not available
 
 ## Installation
 
-### Option 1: Plugin install (recommended)
+### Option 1: Project-local skills (recommended)
 
-```
-/plugin add https://github.com/jojo-dan/obsidian-canvas-skill
-```
-
-### Option 2: Global skills directory
-
-```bash
-git clone https://github.com/jojo-dan/obsidian-canvas-skill ~/.claude/skills/obsidian-canvas-skill
-```
-
-### Option 3: Project-local skills
+Clone into your project's `.claude/skills/` directory. Skills are available in that project's Claude Code sessions.
 
 ```bash
 git clone https://github.com/jojo-dan/obsidian-canvas-skill .claude/skills/obsidian-canvas-skill
 ```
 
-After installation, the skills are available as `/canvas`, `/canvas-verify`, and `/canvas-aesthetics` in your Claude Code session.
+### Option 2: Personal skills (global)
+
+Clone into `~/.claude/skills/` to make the skills available in all Claude Code sessions.
+
+```bash
+git clone https://github.com/jojo-dan/obsidian-canvas-skill ~/.claude/skills/obsidian-canvas-skill
+```
+
+### Option 3: Plugin directory
+
+Point Claude Code to the repo as a plugin directory.
+
+```bash
+claude --plugin-dir /path/to/obsidian-canvas-skill
+```
+
+After installation via Option 1 or Option 2, the skills are automatically registered and available as `/canvas`, `/canvas-verify`, and `/canvas-aesthetics` in your Claude Code session. With Option 3, the same slash commands are available for the duration of that session.
 
 ## Usage
 
