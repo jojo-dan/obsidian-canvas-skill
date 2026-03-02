@@ -1,0 +1,129 @@
+{
+  "nodes": [
+    {
+      "id": "landmark-input",
+      "type": "text",
+      "x": 0,
+      "y": 200,
+      "width": 500,
+      "height": 80,
+      "color": "1",
+      "text": "## Input\nNatural language requirements"
+    },
+    {
+      "id": "step-layout",
+      "type": "text",
+      "x": 600,
+      "y": 0,
+      "width": 320,
+      "height": 100,
+      "text": "### Step 1: Layout Planning\nDesign nodes, edges, layout pattern"
+    },
+    {
+      "id": "step-generate",
+      "type": "text",
+      "x": 600,
+      "y": 140,
+      "width": 320,
+      "height": 100,
+      "text": "### Step 2: Generate File\nUse json-canvas skill"
+    },
+    {
+      "id": "step-verify",
+      "type": "text",
+      "x": 600,
+      "y": 280,
+      "width": 320,
+      "height": 100,
+      "text": "### Step 3: canvas-verify\n7-item Pre-Flight Checklist"
+    },
+    {
+      "id": "step-visual",
+      "type": "text",
+      "x": 600,
+      "y": 420,
+      "width": 320,
+      "height": 100,
+      "text": "### Step 4: Visual Check\nobsidian-cli screenshot"
+    },
+    {
+      "id": "landmark-output",
+      "type": "text",
+      "x": 1040,
+      "y": 200,
+      "width": 400,
+      "height": 80,
+      "color": "4",
+      "text": "## Output\nValidated .canvas file"
+    },
+    {
+      "id": "step-correction",
+      "type": "text",
+      "x": 820,
+      "y": 560,
+      "width": 320,
+      "height": 100,
+      "color": "3",
+      "text": "### Step 5: Correction Loop\nMax 3 iterations"
+    },
+    {
+      "id": "annotation-legend",
+      "type": "text",
+      "x": 0,
+      "y": 560,
+      "width": 260,
+      "height": 100,
+      "text": "Legend\n🟥 Input/Output\n🟦 Steps\n🟧 Correction"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "fromNode": "landmark-input",
+      "toNode": "step-layout",
+      "label": "requirements"
+    },
+    {
+      "id": "e2",
+      "fromNode": "step-layout",
+      "toNode": "step-generate"
+    },
+    {
+      "id": "e3",
+      "fromNode": "step-generate",
+      "toNode": "step-verify"
+    },
+    {
+      "id": "e4",
+      "fromNode": "step-verify",
+      "toNode": "step-visual",
+      "label": "PASS"
+    },
+    {
+      "id": "e5",
+      "fromNode": "step-visual",
+      "toNode": "landmark-output",
+      "label": "PASS"
+    },
+    {
+      "id": "e6",
+      "fromNode": "step-verify",
+      "toNode": "step-correction",
+      "label": "FAIL",
+      "color": "3"
+    },
+    {
+      "id": "e7",
+      "fromNode": "step-visual",
+      "toNode": "step-correction",
+      "label": "FAIL",
+      "color": "3"
+    },
+    {
+      "id": "e8",
+      "fromNode": "step-correction",
+      "toNode": "step-generate",
+      "label": "retry"
+    }
+  ]
+}
